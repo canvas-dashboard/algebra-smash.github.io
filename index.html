@@ -231,6 +231,63 @@
         <input type="text" id="game-search-input" class="search-input" placeholder="Search for a game...">
     </div>
     <main>
+    
+  <div id="adPopup" style="position: fixed; left: 20px; top: 50%; transform: translateY(-50%); width: 300px; background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; z-index: 9999;"><button onclick="confirmClose()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #9ca3af; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: all 0.2s;">×</button>
+   <div id="adContent" style="text-align: center;">
+    <div style="font-size: 60px; margin-bottom: 15px;">
+     ➗
+    </div>
+    <h3 style="margin: 0 0 10px 0; font-size: 18px; color: #1f2937;">Algebra Smash has ads!?</h3>
+    <p style="margin: 0 0 15px 0; font-size: 14px; color: #6b7280; line-height: 1.5;">Algebra Smash is now free WITH ADS! Since you're here, visit my github!</p><a href="http://github.com/canvas-dashboard/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #3b82f6; color: white; padding: 10px 24px; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; transition: background 0.2s;">Visit site 🡭</a>
+   </div>
+  </div>
+  <div id="confirmModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center;">
+   <div style="background: white; padding: 30px; border-radius: 12px; max-width: 400px; margin: 20px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+    <h3 style="margin: 0 0 15px 0; font-size: 20px; color: #1f2937;">Website Name Here is free and wants to stay free. Are you sure you want to close this ad?</h3>
+    <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;"><button onclick="closeAd()" style="background: #ef4444; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-weight: 500; font-size: 14px;">Yes, Close</button> <button onclick="cancelClose()" style="background: #10b981; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-weight: 500; font-size: 14px;">Keep Supporting</button>
+    </div>
+   </div>
+  </div>
+  <script>
+// 📝 EASY AD MANAGEMENT - Add or remove ads here!
+const ads = [
+];
+
+let currentAdIndex = 0;
+
+function showAd(index) {
+  const ad = ads[index];
+  const content = document.getElementById('adContent');
+  content.innerHTML = `
+    <div style="font-size: 60px; margin-bottom: 15px;">${ad.emoji}</div>
+    <h3 style="margin: 0 0 10px 0; font-size: 18px; color: #1f2937;">${ad.title}</h3>
+    <p style="margin: 0 0 15px 0; font-size: 14px; color: #6b7280; line-height: 1.5;">${ad.description}</p>
+    <a href="${ad.link}" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #3b82f6; color: white; padding: 10px 24px; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; transition: background 0.2s;">Visit site 🡭</a>
+  `;
+}
+
+function nextAd() {
+  currentAdIndex = (currentAdIndex + 1) % ads.length;
+  showAd(currentAdIndex);
+}
+
+function confirmClose() {
+  document.getElementById('confirmModal').style.display = 'flex';
+}
+
+function closeAd() {
+  document.getElementById('adPopup').style.display = 'none';
+  document.getElementById('confirmModal').style.display = 'none';
+}
+
+function cancelClose() {
+  document.getElementById('confirmModal').style.display = 'none';
+}
+
+// Cycle through ads every 10 seconds
+setInterval(nextAd, 10000);
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9aaf23c451662b06',t:'MTc2NTIyNzA3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
         <div class="game-list" id="game-list">
             <!-- BEGIN GAME CARDS -->
             <div class="game-card">

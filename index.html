@@ -7,217 +7,217 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
-            --navy: #001f3f;
-            --black: #101010;
-            --darker-blue: #081a2d;
-            --accent: #0d4e91;
-            --text: #e9f2fa;
-            --card: #0b223d;
-            --button: #093366;
-            --button-hover: #155fa0;
-        }
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', 'Arial', sans-serif;
-            background: linear-gradient(135deg, var(--navy) 70%, var(--darker-blue) 100%);
-            color: var(--text);
-            min-height: 100vh;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--black);
-            padding: 1rem 2rem;
-            box-shadow: 0px 2px 16px rgba(0,0,0,0.24);
-        }
-        .site-title {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #76a7ff;
-            text-shadow: 0 2px 12px #000a;
-        }
-        .settings-btn {
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--text);
-            cursor: pointer;
-        }
-        .description {
-            text-align: center;
-            margin: 2rem 0 1.5rem 0;
-            font-size: 1.17rem;
-            color: #b7c7de;
-        }
-
-        /* SEARCH BAR STYLE */
-        .search-bar-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.8rem;
-            margin-top: 0.1rem;
-        }
-        .search-input {
-            width: 310px;
-            padding: 0.55em 1em;
-            font-size: 1.1rem;
-            border-radius: 2em;
-            border: 1px solid #185283;
-            background: #113b60;
-            color: #eafdff;
-            outline: none;
-            margin-right: 0.5em;
-        }
-        @media (max-width: 600px) {
-            .search-input { width: 80vw;}
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .game-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 32px;
-            width: 100%;
-            max-width: 900px;
-            margin-bottom: 3rem;
-        }
-        .game-card {
-            background: var(--card);
-            border-radius: 1rem;
-            box-shadow: 0 2px 24px #01304b45;
-            width: 270px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem 1rem 2rem 1rem;
-        }
-        .game-card img {
-            width: 100%;
-            height: 152px;
-            object-fit: cover;
-            border-radius: 0.6rem;
-            margin-bottom: 1.2rem;
-            background: #162c44;
-        }
-        .game-title {
-            font-size: 1.18rem;
-            font-weight: 600;
-            color: #74bae7;
-            margin-bottom: 0.7rem;
-        }
-        .play-btn {
-            background: var(--button);
-            color: #f8fdff;
-            border: none;
-            padding: 0.5em 1.7em;
-            font-size: 1rem;
-            border-radius: 3em;
-            cursor: pointer;
-            font-weight: 500;
-            margin-top: 0.4em;
-            transition: background 0.14s;
-        }
-        .play-btn:hover {
-            background: var(--button-hover);
-        }
-        /* SETTINGS MODAL */
-        .modal-bg {
-            display: none;
-            position: fixed;
-            z-index: 99;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(5,12,18,0.8);
-        }
-        .modal-active {
-            display: block;
-        }
-        .settings-modal {
-            background: var(--card);
-            color: var(--text);
-            border-radius: 1.2rem;
-            position: fixed;
-            z-index: 100;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 310px;
-            width: 90vw;
-            max-width: 430px;
-            padding: 2.1rem 1.6rem 1.2rem 1.6rem;
-            box-shadow: 0 6px 44px #01213a99;
-            display: flex;
-            flex-direction: column;
-        }
-        .settings-modal h2 {
-            font-size: 1.3rem;
-            color: #7cd5ff;
-            font-weight: 700;
-            margin: 0 0 1.2rem 0;
-            letter-spacing: 1px;
-        }
-        .close-modal-btn {
-            background: none;
-            border: none;
-            color: #8ba7c2;
-            font-size: 1.7rem;
-            align-self: flex-end;
-            margin-top: -1.1rem;
-            margin-right: -0.5rem;
-            cursor: pointer;
-        }
-        .setting-row {
-            margin: 1rem 0 0.8rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-        .setting-row label {
-            font-size: 1.05rem;
-            flex: 0 0 126px;
-        }
-        .setting-row input {
-            font-size: 1.02rem;
-            border-radius: 0.6rem;
-            border: 1px solid #3b5c74;
-            background: #10263c;
-            color: #eafffd;
-            padding: 0.35em 0.8em;
-            transition: border 0.14s;
-        }
-        .apply-btn {
-            margin-top: 1.55rem;
-            background: var(--button-hover);
-            color: #f9fdff;
-            border: none;
-            font-size: 1.1rem;
-            border-radius: 3em;
-            cursor: pointer;
-            font-weight: 500;
-            padding: 0.5em 2.2em;
-        }
-        .apply-btn:active { background: #0d3e70; }
-        @media (max-width: 600px) {
-            .game-list { gap: 18px; }
-            .game-card { width: 96vw; max-width: 290px;}
-        }
+                    --navy: #001f3f;
+                    --black: #101010;
+                    --darker-blue: #081a2d;
+                    --accent: #0d4e91;
+                    --text: #e9f2fa;
+                    --card: #0b223d;
+                    --button: #093366;
+                    --button-hover: #155fa0;
+                }
+                html, body {
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    font-family: 'Segoe UI', 'Arial', sans-serif;
+                    background: linear-gradient(135deg, var(--navy) 70%, var(--darker-blue) 100%);
+                    color: var(--text);
+                    min-height: 100vh;
+                }
+                body {
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100vh;
+                }
+                header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    background: var(--black);
+                    padding: 1rem 2rem;
+                    box-shadow: 0px 2px 16px rgba(0,0,0,0.24);
+                }
+                .site-title {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    letter-spacing: 2px;
+                    color: #76a7ff;
+                    text-shadow: 0 2px 12px #000a;
+                }
+                .settings-btn {
+                    font-size: 1.5rem;
+                    background: none;
+                    border: none;
+                    color: var(--text);
+                    cursor: pointer;
+                }
+                .description {
+                    text-align: center;
+                    margin: 2rem 0 1.5rem 0;
+                    font-size: 1.17rem;
+                    color: #b7c7de;
+                }
+                
+                /* SEARCH BAR STYLE */
+                .search-bar-container {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 1.8rem;
+                    margin-top: 0.1rem;
+                }
+                .search-input {
+                    width: 310px;
+                    padding: 0.55em 1em;
+                    font-size: 1.1rem;
+                    border-radius: 2em;
+                    border: 1px solid #185283;
+                    background: #113b60;
+                    color: #eafdff;
+                    outline: none;
+                    margin-right: 0.5em;
+                }
+                @media (max-width: 600px) {
+                     n  .search-input { width: 80vw;}
+                }
+                
+                main {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .game-list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 32px;
+                    width: 100%;
+                    max-width: 900px;
+                    margin-bottom: 3rem;
+                }
+                .game-card {
+                    background: var(--card);
+                    border-radius: 1rem;
+                    box-shadow: 0 2px 24px #01304b45;
+                    width: 270px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 1rem 1rem 2rem 1rem;
+                }
+                .game-card img {
+                    width: 100%;
+                    height: 152px;
+                    object-fit: cover;
+                    border-radius: 0.6rem;
+                    margin-bottom: 1.2rem;
+                    background: #162c44;
+                }
+                .game-title {
+                    font-size: 1.18rem;
+                    font-weight: 600;
+                    color: #74bae7;
+                    margin-bottom: 0.7rem;
+                }
+                .play-btn {
+                    background: var(--button);
+                    color: #f8fdff;
+                    border: none;
+                    padding: 0.5em 1.7em;
+                    font-size: 1rem;
+                    border-radius: 3em;
+                    cursor: pointer;
+                    font-weight: 500;
+                    margin-top: 0.4em;
+                    transition: background 0.14s;
+                }
+                .play-btn:hover {
+                    background: var(--button-hover);
+                }
+                /* SETTINGS MODAL */
+                .modal-bg {
+                    display: none;
+                    position: fixed;
+                    z-index: 99;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background: rgba(5,12,18,0.8);
+                }
+                .modal-active {
+                    display: block;
+                }
+                .settings-modal {
+                    background: var(--card);
+                    color: var(--text);
+                    border-radius: 1.2rem;
+                    position: fixed;
+                    z-index: 100;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    min-width: 310px;
+                    width: 90vw;
+                    max-width: 430px;
+                    padding: 2.1rem 1.6rem 1.2rem 1.6rem;
+                    box-shadow: 0 6px 44px #01213a99;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .settings-modal h2 {
+                    font-size: 1.3rem;
+                    color: #7cd5ff;
+                    font-weight: 700;
+                    margin: 0 0 1.2rem 0;
+                    letter-spacing: 1px;
+                }
+                .close-modal-btn {
+                    background: none;
+                    border: none;
+                    color: #8ba7c2;
+                    font-size: 1.7rem;
+                    align-self: flex-end;
+                    margin-top: -1.1rem;
+                    margin-right: -0.5rem;
+                    cursor: pointer;
+                }
+                .setting-row {
+                    margin: 1rem 0 0.8rem 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.7rem;
+                }
+                .setting-row label {
+                    font-size: 1.05rem;
+                    flex: 0 0 126px;
+                }
+                .setting-row input {
+                    font-size: 1.02rem;
+                    border-radius: 0.6rem;
+                    border: 1px solid #3b5c74;
+                    background: #10263c;
+                    color: #eafffd;
+                    padding: 0.35em 0.8em;
+                    transition: border 0.14s;
+                }
+                .apply-btn {
+                    margin-top: 1.55rem;
+                    background: var(--button-hover);
+                    color: #f9fdff;
+                    border: none;
+                    font-size: 1.1rem;
+                    border-radius: 3em;
+                    cursor: pointer;
+                    font-weight: 500;
+                    padding: 0.5em 2.2em;
+                }
+                .apply-btn:active { background: #0d3e70; }
+                @media (max-width: 600px) {
+                    .game-list { gap: 18px; }
+                    .game-card { width: 96vw; max-width: 290px;}
+                }
     </style>
 </head>
 <body>
@@ -272,6 +272,13 @@
                 <img src="data:image/jpeg;base64,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" alt="division symbol">
                 <div class="game-title">Drive Mad</div>
                 <button class="play-btn" onclick="window.open('https://drive-mad-17103175.codehs.me/', '_blank')">Open in new tab</button>
+            </div>
+            <!-- END GAME CARDS -->
+            <!-- BEGIN GAME CARDS -->
+                        <div class="game-card">
+                <img src="data:image/jpeg;base64,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" alt="division symbol">
+                <div class="game-title">People Playground</div>
+                <button class="play-btn" onclick="window.open('https://people-playground-17123517.codehs.me/', '_blank')">Open in new tab</button>
             </div>
             <!-- END GAME CARDS -->
         </div>

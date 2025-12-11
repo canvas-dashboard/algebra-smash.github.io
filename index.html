@@ -329,8 +329,38 @@ setInterval(nextAd, 10000);
 </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9aaf23c451662b06',t:'MTc2NTIyNzA3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
         <div class="game-list" id="game-list">
-        <h1 style="font:ariel">!Sorry, but we are experiencing technical difficulties!</h1>
+        <!-- BEGINNING OF GAME CARD -->
+        <div class="game-card">
+  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUQExISFhUXFhUXFhUVFRUXFhYVFxUWFhgYFxcYHSggGBomHRUVIzEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGxAQGi0lICUtLS8tLS8tLS8tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS8tLf/AABEIAOEA4QMBEQACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAAAwIEBQYHAQj/xABHEAABAwEEBQcHCQcDBQAAAAABAAIDEQQFITESQVFhcQYHMoGRobETIlJicsHRI0JTkqKywuHwFBUzQ4KD8SQ0YxZUc7PS/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAEEAgMFBgf/xAA5EQACAQIDBAcGBgICAwAAAAAAAQIDEQQSIQUxQVETIjJhcYGRQqGxwdHwBiMzUuHxFGIVQyRTgv/aAAwDAQACEQMRAD8A7igCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAjtE7I2l73Na0ZucQ0DiSobtvJSb0Rqd585V3Q1AmMp2QtLh9c0b3rVLEQjxLUMFWlwt4msW7nj1Q2Q8ZJKfZaD4rS8WuCLEdnful6Iw1o527e7ossrB7D3HtL/ctf8Aly5G6Oz6Xe/vwLM8515/Sx9UTFj/AJUzatnQ/a/eSw86l5NzNnd7UR/C4LJYqRD2dT5NffgX8PPBax0rPZ3ez5Rvi5ylYuXFGl7Pp8GzJ2Hnjb/OsjhvjkDu5wb4rNYtcUa5bO/bL1RtF18493TUHl/JO2TNLPtdHvW6NeEuJWng60eF/A2qKVrwHNcHA5FpBB4ELdcrNW3laEBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQF/8Ar7XkUAAAAASUVORK5CYII=" 
+  alt="Soundboard">
+  <div class="game-title">Soundboard</div>
+  <button class="play-btn" onclick="openSoundboard()">Play</button>
+</div>
+            <script>
+                function openSoundboard() {
+  const codeUrl = 'https://raw.githubusercontent.com/canvas-dashboard/algebra-smash.github.io/refs/heads/main/games/soundboard.html';
+  fetch(codeUrl)
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.text();
+    })
+    .then(code => {
+      const newTab = window.open('about:blank');
+      if (newTab) {
+        newTab.document.open();
+        newTab.document.write(code);
+        newTab.document.close();
+      } else {
+        alert('Pop-up blocked!');
+      }
+    })
+    .catch(error => {
+      alert('Error fetching soundboard code: ' + error.message);
+    });
+}
+            </script>
         </div>
+        <!-- ENDING OF GAME CARD -->
     </main>
     <!-- SETTINGS MODAL -->
     <div class="modal-bg" id="settings-modal-bg">
